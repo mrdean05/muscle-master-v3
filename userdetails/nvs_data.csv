@@ -1,0 +1,5 @@
+key,type,encoding,value
+storage,namespace,,
+user,data,u8,0
+ssid,data,string,"geo-fence"
+pass,data,string,"geo-fence"

@@ -1,0 +1,20 @@
+{
+        "transaction_id":       "223dseeww",
+        "date_time":    "2844",
+        "total_price":  "1000gh",
+        "transaction":  [{
+                        "brand":        "Good Morning",
+                        "type": "White Oat",
+                        "weight":       "500g",
+                        "barcode_id":   "",
+                        "quantity":     "5",
+                        "total_price":  "125"
+                }, {
+                        "brand":        "Good Morning",
+                        "type": "White Oat",
+                        "weight":       "500g",
+                        "barcode_id":   "",
+                        "quantity":     "4",
+                        "total_price":  "100"
+                }]
+}
