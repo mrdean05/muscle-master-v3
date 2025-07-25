@@ -17,7 +17,7 @@ namespace APP {
         public:
             enum class MenuChildState: uint8_t {
                 Null,
-                Inventory,
+                Sales,
                 Calculator,
                 Settings
             };

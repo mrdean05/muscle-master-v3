@@ -27,6 +27,7 @@ namespace APP{
             bool httpPutMethod(const std::string& url, const char* data);
             bool httpClientOpen( const std::string& url, size_t contentLength );
             bool httpClientWrite( const char* buffer, uint16_t len);
+            bool httpGetStatusCode(void);
             bool httpClientClose( void );
 
             static EventStatus getHttpEventStatus( void ) { return httpEventHandleStatus; }

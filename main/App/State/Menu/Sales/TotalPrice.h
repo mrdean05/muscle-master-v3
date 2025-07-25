@@ -3,7 +3,7 @@
 
 #include "ChildStateAnnex.h"
 #include "LCDFrameDisplay.h"
-#include "Inventory.h"
+#include "Sales.h"
 
 namespace APP{
     class TotalPrice: public StateTemp {

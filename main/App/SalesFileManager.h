@@ -1,5 +1,5 @@
-#ifndef __INVENTORY_FILE_MANAGER_H__
-#define __INVENTORY_FILE_MANAGER_H__
+#ifndef __SALES_FILE_MANAGER_H__
+#define __SALES_FILE_MANAGER_H__
 
 #include "FileTransferManager.h"
 
@@ -7,11 +7,11 @@
 #include "freertos/semphr.h"
 
 namespace APP{
-    class InventoryFileManager{
+    class SalesFileManager{
         private:
-            static FileTransferManager* inventoryFiles_;
-            static SemaphoreHandle_t inventoryMutex_;
-            InventoryFileManager();
+            static FileTransferManager* salesFiles_;
+            static SemaphoreHandle_t salesMutex_;
+            SalesFileManager();
 
         public:
             enum Ops{
@@ -21,7 +21,7 @@ namespace APP{
             };
             
             static void doOperation(Ops opsType, char* data);
-            static InventoryFileManager* getInstance( void );
+            static SalesFileManager* getInstance( void );
     };
 }
 

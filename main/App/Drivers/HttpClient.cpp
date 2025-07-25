@@ -40,6 +40,7 @@ namespace APP {
         config.url = "https://ndkfz1czq1.execute-api.us-east-1.amazonaws.com/dev/musclesqlitebucket/item2.db";
         config.event_handler = httpEventHandler;
         config.user_data = responseBuffer;
+        config.timeout_ms = 10000;
         //config.transport_type = HTTP_TRANSPORT_OVER_SSL;
         //config.skip_cert_common_name_check = true;
         //config.cert_pem = 
@@ -91,6 +92,7 @@ namespace APP {
             return false;
         }
 
+        /*
         esp_http_client_fetch_headers(client); 
 
         int status_code = esp_http_client_get_status_code(client);
@@ -98,8 +100,15 @@ namespace APP {
             printf("Unexpected HTTP response code: %d\n", status_code);
             return false;
         }
+        */
 
         return true;
+    }
+
+    bool HttpClient::httpGetStatusCode(void){
+        esp_http_client_fetch_headers(client); 
+        int statusCode = esp_http_client_get_status_code(client);
+        return statusCode;
     }
 
     bool HttpClient::httpClientClose( void ){

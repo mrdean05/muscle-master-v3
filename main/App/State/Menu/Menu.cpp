@@ -1,5 +1,5 @@
 #include "Menu.h"
-#include "Inventory/Inventory.h"
+#include "Sales/Sales.h"
 #include "Calculator.h"
 #include "Settings.h"
 #include "KeypadCharacter.h"
@@ -13,11 +13,11 @@ namespace APP {
         stateControllerContext = context;
         currentChildState = static_cast<uint8_t>(menuChildState);
 
-        static Inventory inventoryState = Inventory(this);
+        static Sales salesState = Sales(this);
         static Calculator calculatorState = Calculator(this);
         static Settings settingsState = Settings(this);
 
-        states[0] = &inventoryState;
+        states[0] = &salesState;
         states[1] = &calculatorState;
         states[2] = &settingsState;
 
@@ -39,13 +39,15 @@ namespace APP {
             if (eventType == Events::Event::AlphaNumeric){
                 switch(KeypadCharacter::getPressedKey2()){
                     case '1':
-                    case '4':
                         menuLogger.info("Inventory Selected\n");
-                        currentChildState = static_cast<uint8_t>(MenuChildState::Inventory);
+                        break;
+                    case '2':
+                        menuLogger.info("Sales Selected\n");
+                        currentChildState = static_cast<uint8_t>(MenuChildState::Sales);
                         states[currentChildState - 1]->entryAction();
 
                         break;
-                    case '2':
+                    case '3':
                         menuLogger.info("Calculator Selected\n");
                         currentChildState = static_cast<uint8_t>(MenuChildState::Calculator);
                         states[currentChildState - 1]->entryAction();

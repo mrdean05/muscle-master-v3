@@ -3,7 +3,7 @@
 #include "Table.h"
 #include "ProgramController.h"
 #include "StateEnums.h"
-#include "Inventory.h"
+#include "Sales.h"
 
 namespace APP{
 
@@ -30,10 +30,10 @@ namespace APP{
 
             // search data from the database
             //if found, show product item screen and set State to ProductDetails
-            Bsp::product_obj_t* itemFound = Inventory::searchCurrentItemWithBarcode(barcode); 
+            Bsp::product_obj_t* itemFound = Sales::searchCurrentItemWithBarcode(barcode); 
             if( itemFound != NULL ){
                 tableScreen->productDisplay(*itemFound);
-                Inventory::setCurrentChildStateAnnex(Inventory::InventoryStates::ProductDetails);
+                Sales::setCurrentChildStateAnnex(Sales::SalesStates::ProductDetails);
             }
 
         }
@@ -46,11 +46,11 @@ namespace APP{
         }
 
         else if (eventType == Events::Event::Enter){
-            if (Inventory::itemListCount != 0){
-                Inventory::setCurrentChildStateAnnex(Inventory::InventoryStates::TotalPrice);
-                tableScreen->displayTotalPrice(std::to_string(Inventory::getInventoryTotalPrice()));
-                Inventory::resetInventoryTotalPrice();
-                Inventory::itemListCount = 0;
+            if (Sales::itemListCount != 0){
+                Sales::setCurrentChildStateAnnex(Sales::SalesStates::TotalPrice);
+                tableScreen->displayTotalPrice(std::to_string(Sales::getSalesTotalPrice()));
+                Sales::resetSalesTotalPrice();
+                Sales::itemListCount = 0;
             }
         }
     }

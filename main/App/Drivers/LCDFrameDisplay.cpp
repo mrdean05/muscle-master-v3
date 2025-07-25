@@ -59,7 +59,7 @@ namespace APP {
         screenDisplayUnlock();
     }
 
-    void LCDFrameDisplay::launchInventoryTable( void ){
+    void LCDFrameDisplay::launchSalesTable( void ){
         Bsp::spiMessagePayload screen_command = {};
         screen_command.command = Bsp::command_type::CHILDSTATE;
         screen_command.data.childstate = Bsp::childState_type::MENU_INVENTORY;

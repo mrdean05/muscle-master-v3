@@ -2,7 +2,7 @@
 #include "KeypadCharacter.h"
 #include "StateEnums.h"
 #include "Table.h"
-#include "Inventory.h"
+#include "Sales.h"
 #include <cstring>
 
 
@@ -30,19 +30,19 @@ namespace APP{
 
         }
 
-        else if (eventType == Events::Event::Enter){
+        else if ((eventType == Events::Event::Enter) || (eventType == Events::Event::Cashin)){
             itemQuantity[itemQuantityIndex] = '\0';
-            Bsp::product_obj_t& currentProduct = Inventory::getCurrentItem();
+            Bsp::product_obj_t& currentProduct = Sales::getCurrentItem();
             strcpy(currentProduct.product_quantity, itemQuantity.data());
             uint16_t totalProductPrice = calculateProductItemWithQuantity(itemQuantity.data(), currentProduct.product_price);
             sprintf(currentProduct.total_price, "%d", totalProductPrice);
-            Inventory::addToInventoryTotalPrice(static_cast<uint32_t>(totalProductPrice));
+            Sales::addToSalesTotalPrice(static_cast<uint32_t>(totalProductPrice));
             productDetailScreen->productDescriptionEnterTextArea(currentProduct);
-            Inventory::setCurrentChildStateAnnex(Inventory::InventoryStates::Table);
-            Inventory::addItemToInventoryContainer(&currentProduct);
+            Sales::setCurrentChildStateAnnex(Sales::SalesStates::Table);
+            Sales::addItemToSalesContainer(&currentProduct);
             currentProduct = {};
             itemQuantityIndex = 0;
-            Inventory::itemListCount++;
+            Sales::itemListCount++;
         }
 
     }

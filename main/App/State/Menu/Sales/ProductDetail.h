@@ -3,7 +3,7 @@
 
 #include "ChildState.h"
 #include "LCDFrameDisplay.h"
-#include "Inventory.h"
+#include "Sales.h"
 #include <array>
 
 namespace APP{

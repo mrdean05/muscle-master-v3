@@ -52,7 +52,7 @@ namespace APP {
         static Bsp::Timer batTimer;
         batTimer_ = &batTimer;
 
-        (void)InventoryFileManager::getInstance();
+        (void)SalesFileManager::getInstance();
 
         Bsp::NvsFlashManager();
 

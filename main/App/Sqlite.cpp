@@ -5,6 +5,7 @@
 namespace APP {
 
     bool Sqlite::sqliteInitialize = false;
+    int8_t Sqlite::itemFound = -1;
     int Sqlite::callback(void *data, int argc, char **argv, char **azColName) {
         int i = 0;
 
@@ -15,6 +16,8 @@ namespace APP {
             strcpy(product->product_type, argv[1] ? argv[1] : "NULL");
             strcpy(product->product_price, argv[2] ? argv[2] : "NULL");
             strcpy(product->product_weight, argv[3] ? argv[3] : "NULL");
+            strcpy(product->product_barcode_id, argv[4] ? argv[4] : "NULL");
+            itemFound = 0;
         }
 
 
@@ -45,7 +48,7 @@ namespace APP {
             printf("SQL error: %s\n", zErrMsg);
             sqlite3_free(zErrMsg);
         } else {
-            printf("Operation done successfully\n");
+            printf("Operation done successfully: %d\n", rc);
         }
         printf("Time taken: %lld\n", esp_timer_get_time()-start);
         return rc;
@@ -130,6 +133,8 @@ namespace APP {
     }
 
     int8_t Sqlite::searchItems(const char* itemBarcode, productDesc *product){
+        
+        itemFound = -1;
         char query[256];
         snprintf(query, sizeof(query), "SELECT * FROM products WHERE barcode = '%s'", itemBarcode);
     
@@ -137,7 +142,8 @@ namespace APP {
         if (rc != SQLITE_OK) {
             return -1;
             }
-        return 0;
+
+        return itemFound;
     }
 
 

@@ -1,5 +1,5 @@
 #include "TotalPrice.h"
-#include "Inventory.h"
+#include "Sales.h"
 
 
 namespace APP{
@@ -19,8 +19,8 @@ namespace APP{
 
     void TotalPrice::handleEvent(Events::Event eventType){
         if ((eventType == Events::Event::Enter) || (eventType == Events::Event::Cashin)){
-            Inventory::setCurrentChildStateAnnex(Inventory::InventoryStates::Table);
-            Inventory::saveInventoryTransaction();
+            Sales::setCurrentChildStateAnnex(Sales::SalesStates::Table);
+            Sales::saveSalesTransaction();
             totalPriceScreen->returnTable();
         }
     }

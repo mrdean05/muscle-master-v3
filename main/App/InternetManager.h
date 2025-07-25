@@ -25,7 +25,7 @@ namespace APP {
             private:
             static InternetStatus currentInternetStatus;
             static Bsp::Logger InternetManagerLogger;
-            static FileTransferManager inventoryFileManager_;
+            static FileTransferManager salesFileManager_;
 
 
     };

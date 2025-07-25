@@ -21,7 +21,7 @@ namespace APP{
             void initializeLCD( void );
             void launchScreen ( void );
             void launchMenu ( void );
-            void launchInventoryTable ( void );
+            void launchSalesTable ( void );
             void productDisplay(const Bsp::product_obj_t& item_objt);
             void productDescriptionTextArea(const char key);
             void productDescriptionEnterTextArea(const Bsp::product_obj_t& item_objt);

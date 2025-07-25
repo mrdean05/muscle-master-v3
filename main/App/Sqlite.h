@@ -14,6 +14,7 @@ namespace APP {
         private:
             sqlite3 *db;
             std::string DBfileName;
+            static int8_t itemFound;
             static bool sqliteInitialize;
             static int callback(void *data, int argc, char **argv, char **azColName);
             int db_open(const char *filename, sqlite3 **db);

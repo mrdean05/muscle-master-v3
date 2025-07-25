@@ -5,7 +5,7 @@
 #include "LCDFrameDisplay.h"
 #include "Sqlite.h"
 #include "StateEnums.h"
-#include "Inventory.h"
+#include "Sales.h"
 
 namespace APP{
     class Table: public StateTemp {

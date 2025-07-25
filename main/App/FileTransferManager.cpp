@@ -322,6 +322,7 @@ namespace APP{
         while((bytesRead = read(fd, buffer, BUFFER_SIZE)) > 0){
             if(!fileTransferHttp.httpClientWrite(buffer, bytesRead))
             {
+                printf("Error here\n");
                 status = false;
                 break;
             }

@@ -1,7 +1,7 @@
 #include <ItemListsManager.h>
 #include "Fatfs.h"
 #include "cJSON.h"
-#include "InventoryFileManager.h"
+#include "SalesFileManager.h"
 
 namespace APP{
 
@@ -57,7 +57,7 @@ namespace APP{
         char *json_string = cJSON_Print(root);
         printf("%s\n", json_string);
 
-        InventoryFileManager::doOperation(InventoryFileManager::Ops::Write, json_string);
+        SalesFileManager::doOperation(SalesFileManager::Ops::Write, json_string);
 
         // Clean up
         free(json_string);

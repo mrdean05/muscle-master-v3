@@ -2,15 +2,12 @@
 #include "WiFiManager.h"
 #include <string>
 #include "Fatfs.h"
-#include "InventoryFileManager.h"
+#include "SalesFileManager.h"
 
 namespace APP {
-
-    //std::string inventoryFilePath { std::string(Bsp::Fatfs::basePath) + "/trans" }; 
     
     InternetManager::InternetStatus InternetManager::currentInternetStatus = InternetManager::InternetStatus::WifiDisconnected;
     Bsp::Logger InternetManager::InternetManagerLogger("InternetManager");
-    //FileTransferManager InternetManager::inventoryFileManager_(inventoryFilePath);
 
     void InternetManager::execute(){
         WiFiManager::initialize();
@@ -18,8 +15,8 @@ namespace APP {
         while (1){
             if (getInternetStatus() == InternetStatus::WifiConnected){
                 //InternetManagerLogger.info("Wifi Connected\n");
-                //inventoryFileManager_.transferFiles();
-                InventoryFileManager::doOperation(InventoryFileManager::Ops::Transfer, nullptr);
+                //SalesFileManager_.transferFiles();
+                SalesFileManager::doOperation(SalesFileManager::Ops::Transfer, nullptr);
                 
                 vTaskDelay(3000/portTICK_PERIOD_MS);
             } 
