@@ -27,7 +27,7 @@ namespace APP{
             case 'O': return Event::Cashout;     // O: CASH OUT
             //case '.': return ;     //
             //case '/': return ;     //
-            //case '+': return ;     //
+            case '+': return Event::Add;     //
             //case '-': return ;     // 
             //case 'X': return ;     // X
             //case 'W': return ;     // W: M+

@@ -19,6 +19,7 @@ namespace APP {
                 Cashout,
                 Enter,
                 Barcode,
+                Add,
                 Null
             };
             Events() = default;

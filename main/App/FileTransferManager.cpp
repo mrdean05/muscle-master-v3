@@ -166,7 +166,7 @@ namespace APP{
             }  
             
             // Write opening [
-            const char* open_bracket = "[\n";
+            const char* open_bracket = "{\n    \"transactions\": [\n";
             write(fd, open_bracket, strlen(open_bracket));            
 
         }
@@ -197,7 +197,7 @@ namespace APP{
             }
 
             // Add comma before new content
-            const char* comma = "]\n";
+            const char* comma = "]\n}";
             write(fd, comma, strlen(comma));
 
             fsync(fd);

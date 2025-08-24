@@ -30,7 +30,7 @@ namespace APP{
 
         }
 
-        else if ((eventType == Events::Event::Enter) || (eventType == Events::Event::Cashin)){
+        else if ((eventType == Events::Event::Enter) || (eventType == Events::Event::Add)){
             itemQuantity[itemQuantityIndex] = '\0';
             Bsp::product_obj_t& currentProduct = Sales::getCurrentItem();
             strcpy(currentProduct.product_quantity, itemQuantity.data());

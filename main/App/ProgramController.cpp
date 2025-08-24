@@ -67,6 +67,7 @@ namespace APP {
         printf("System Status Config: %x\n", static_cast<uint16_t>(pmicPowerManager_->getSystemStatus()));
         printf("Fault Status Config: %x\n", static_cast<uint16_t>(pmicPowerManager_->getFaultStatus()));
     
+        powerManager->setPowerOn();
         printf("Battery Voltage Level: %f\n", batteryManager_->getBatteryVoltageLevel());
         printf("SoC Level: %d\n", batteryManager_->getBatterySoc());
         
@@ -74,11 +75,13 @@ namespace APP {
         batTimer_->setEventCalbk(alarmEvtCalback);
         batTimer_->enableTimer();
         batTimer_->startTimer();
+        powerManager->setPowerOn();
 
     }
 
     void ProgramController::execute(){
 
+        powerManager->setPowerOn();
         barcode_queue = xQueueCreate(2, 14 * sizeof(char));
 
         xTaskCreatePinnedToCore(appFlow, "App flow task", 10  * 1024, static_cast<void*>(&barcode_queue), 1, NULL, 1);
@@ -92,6 +95,7 @@ namespace APP {
         StateController::handleEvent(Events::Event::Menu);
 
         QueueHandle_t barcode_queue = *(static_cast<QueueHandle_t*>(args));
+        powerManager->setPowerOn();
 
         while (1){
 
