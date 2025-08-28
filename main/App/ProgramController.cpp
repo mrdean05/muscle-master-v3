@@ -4,6 +4,7 @@
 #include "usb_driver.h"
 #include "InternetManager.h"
 #include "NvsFlashManager.h"
+#include "Board.h"
 
 
 namespace APP {
@@ -55,6 +56,8 @@ namespace APP {
         (void)SalesFileManager::getInstance();
 
         Bsp::NvsFlashManager();
+
+        Bsp::Board();
 
     }
 

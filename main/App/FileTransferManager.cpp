@@ -312,8 +312,9 @@ namespace APP{
 
         RtcModule::dateAndTime time = RtcModule::getTime();
         std::string dateTime = std::to_string(time.minutes); //+ std::to_string(time.seconds);
-        std::string url = "https://ndkfz1czq1.execute-api.us-east-1.amazonaws.com/dev/musclesqlitebucket/" + dateTime + ".json";
-
+        //std::string url = "https://ndkfz1czq1.execute-api.us-east-1.amazonaws.com/dev/musclesqlitebucket/" + dateTime + ".json";
+        std::string url = "https://smart-calculator-backend.onrender.com/inventory";// + dateTime + ".json";
+        
         if(!fileTransferHttp.httpClientOpen(url, st.st_size)) { 
             status = false;
             goto cleanup;

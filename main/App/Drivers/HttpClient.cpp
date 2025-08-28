@@ -1,6 +1,8 @@
 #include "HttpClient.h"
 #include "esp_crt_bundle.h"
 
+#include "Board.h"
+
 
 namespace APP {
 
@@ -76,6 +78,12 @@ namespace APP {
 
         std::string lengthStr = std::to_string(contentLength);
         esp_http_client_set_header(client, "Content-Length", lengthStr.c_str());
+
+        //Add x-device-id header
+        esp_http_client_set_header(client, "x-device-id", Bsp::Board::getMacAddr());
+
+        //Add device secret
+        esp_http_client_set_header(client, "x-device-secret", "6a8c4e8c79a53a9d36e1f1316914e96d4f2ba9e3b745670cf0047a8487636516");
 
         esp_err_t err = esp_http_client_open(client, contentLength);  // -1 = chunked encoding
         if (err != ESP_OK) {
